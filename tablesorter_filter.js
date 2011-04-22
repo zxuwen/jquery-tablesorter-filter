@@ -222,7 +222,8 @@
             // TODO: throw error for non-existing filter container?
             if(container.length)
               container[0].filterIndex = i;
-            container.keyup(function(e, phrase) {
+              // Changed from .keyup to allow for filtering by both select boxes and textboxes
+            container.bind('keyup change', function(e, phrase) {
               var index = this.filterIndex;
               if(undefined !== phrase)
                 $(this).val(phrase);
